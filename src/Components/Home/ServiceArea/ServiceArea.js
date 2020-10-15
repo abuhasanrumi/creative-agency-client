@@ -4,7 +4,7 @@ import ServiceDetails from '../ServiceDetails/ServiceDetails';
 const ServiceArea = () => {
     const [services, setServices] = useState([])
     useEffect(() =>{
-        fetch('http://localhost:5000/services')
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/services')
         .then(res => res.json())
         .then(data => setServices(data))
     }, [])

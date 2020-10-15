@@ -13,7 +13,7 @@ const Review = () => {
         const review = document.getElementById('review').value;
         
         const newReview = {name, company, review, img}
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/reviews', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newReview)

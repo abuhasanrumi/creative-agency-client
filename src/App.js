@@ -41,8 +41,8 @@ function App() {
 
   const [isAdmin, setIsAdmin] = useState([])
   useEffect(() => {
-    // fetch(`http://localhost:5000/admins?email=${loggedInUser.email}`)
-    fetch(`http://localhost:5000/admins`)
+    // fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins?email=${loggedInUser.email}`)
+    fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins`)
       .then(res => res.json())
       .then(data => {
         setIsAdmin(data)
@@ -68,7 +68,7 @@ function App() {
   // console.log(check)
   useEffect(() => {
 
-    fetch(`http://localhost:5000/admins`)
+    fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins`)
       .then(res => res.json())
       .then(data => {
         const checkAdmin = data.filter(admin => admin.email === loggedInUser.email)

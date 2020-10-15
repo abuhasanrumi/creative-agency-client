@@ -20,7 +20,7 @@ const Order = () => {
         const status = 'Pending'
 
         const newOrder = { name, email, serviceName, details, budget, status }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newOrder)

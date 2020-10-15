@@ -11,14 +11,14 @@ const ServiceList = () => {
     const [loggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
     // const [isAdmin, setIsAdmin] = useState([])
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/admins${loggedInUser.email}`)
+    //     fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins${loggedInUser.email}`)
     //         .then(res => res.json())
     //         .then(data => setIsAdmin(data))
     // }, [])

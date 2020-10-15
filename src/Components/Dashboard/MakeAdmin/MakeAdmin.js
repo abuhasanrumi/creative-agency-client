@@ -8,7 +8,7 @@ const MakeAdmin = () => {
         const email = document.getElementById('email').value;
         
         const newAdmin = {email}
-        fetch('http://localhost:5000/admins', {
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/admins', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newAdmin)

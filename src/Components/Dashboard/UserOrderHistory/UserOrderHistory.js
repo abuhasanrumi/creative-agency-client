@@ -9,7 +9,7 @@ const UserOrderHistory = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://enigmatic-badlands-22893.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
