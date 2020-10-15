@@ -5,6 +5,7 @@ import ServiceListTable from '../ServiceListTable/ServiceListTable';
 import { UserContext } from '../../../App';
 import UserOrderHistory from '../UserOrderHistory/UserOrderHistory';
 
+import spinner from '../../../images/icons/Spin-1s-200px.gif'
 const ServiceList = () => {
 
     const [loggedInUser] = useContext(UserContext)
@@ -15,20 +16,19 @@ const ServiceList = () => {
             .then(data => setOrders(data))
     }, [])
 
-    const [isAdmin, setIsAdmin] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/admins')
-            .then(res => res.json())
-            .then(data => setIsAdmin(data))
-    }, [])
+    // const [isAdmin, setIsAdmin] = useState([])
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/admins${loggedInUser.email}`)
+    //         .then(res => res.json())
+    //         .then(data => setIsAdmin(data))
+    // }, [])
 
-    const checkAdmin = isAdmin.filter(admin => admin.email === loggedInUser.email)
+    // const checkAdmin = isAdmin.filter(admin => admin.email === loggedInUser.email)
     const filterOrder = orders.filter(order => order.email === loggedInUser.email)
 
     // const verifyAdmin = checkAdmin[0]
     // console.log(checkAdmin)
 
-    // console.log(checkAdmin)
     return (
         <section>
             <div className="container-fluid row">
@@ -39,6 +39,9 @@ const ServiceList = () => {
                 <div className="col-md-10">
                     <SectionTitle title={"Service List"}></SectionTitle>
                     <div>
+                        {
+                            orders.length === 0 && <img style={{ width: "30px" }} src={spinner} alt=""></img>
+                        }
                         {
                             orders.length > 0 ? <table className="table table-borderless">
                                 <thead>

@@ -6,55 +6,30 @@ import './Sidebar.css'
 import logo from '../../../images/logos/logo.png'
 import { UserContext } from '../../../App';
 import * as firebase from "firebase/app";
+import spinner from '../../../images/icons/Spin-1s-200px.gif'
 
 const Sidebar = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser, setLoggedInUser, newAdmin, setNewAdmin] = useContext(UserContext)
     const signOut = () => {
         firebase.auth().signOut().then(function () {
             setLoggedInUser({})
+            setNewAdmin(false)
         }).catch(function (error) {
             // An error happened.
         });
     }
 
-    const [isAdmin, setIsAdmin] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/admins')
-            .then(res => res.json())
-            .then(data => setIsAdmin(data))
-    }, [])
-
-    const checkAdmin = isAdmin.filter(admin => admin.email === loggedInUser.email)
-
     return (
         <div className="sidebar d-flex flex-column justify-content-between py-5 px-4" >
             <Link to="/dashboard"><img className="img-fluid py-3 pb-5" style={{ width: "150px" }} src={logo} alt="" /></Link>
             <ul className="list-unstyled">
-
+                {
+                    newAdmin === false ? '' : ''
+                }
 
                 {
-                    checkAdmin.length === 0 || checkAdmin === undefined ?
-
-                        <div>
-                            <li>
-                                <Link to="/dashboard" className="text-dark">
-                                    <FontAwesomeIcon icon={faServer} /> <span>Service List</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard/order" className="text-dark">
-                                    <FontAwesomeIcon icon={faUsers} /> <span>Orders</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard/review" className="text-dark">
-                                    <FontAwesomeIcon icon={faComment} /> <span>Review</span>
-                                </Link>
-                            </li>
-                        </div>
-
-                        :
+                    newAdmin ?
 
                         <div>
                             <li>
@@ -70,6 +45,29 @@ const Sidebar = () => {
                             <li>
                                 <Link to="/dashboard/makeAdmin" className="text-dark">
                                     <FontAwesomeIcon icon={faUserPlus} /> <span>Make Admin</span>
+                                </Link>
+                            </li>
+                        </div>
+
+                        :
+
+
+
+
+                        <div>
+                            <li>
+                                <Link to="/dashboard" className="text-dark">
+                                    <FontAwesomeIcon icon={faServer} /> <span>Service List</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/order" className="text-dark">
+                                    <FontAwesomeIcon icon={faUsers} /> <span>Orders</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard/review" className="text-dark">
+                                    <FontAwesomeIcon icon={faComment} /> <span>Review</span>
                                 </Link>
                             </li>
                         </div>

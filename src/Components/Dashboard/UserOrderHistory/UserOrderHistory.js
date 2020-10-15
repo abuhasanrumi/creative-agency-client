@@ -42,7 +42,6 @@ const UserOrderHistory = () => {
 const SingleOrder = (props) => {
     const { serviceName, details, status } = props.order;
     const checkAdmin = props.checkAdmin;
-    console.log(checkAdmin)
 
     return (
 

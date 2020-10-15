@@ -22,6 +22,7 @@ export const UserContext = createContext()
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState([])
+  const [newAdmin, setNewAdmin] = useState(false)
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -40,15 +41,47 @@ function App() {
 
   const [isAdmin, setIsAdmin] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/admins')
+    // fetch(`http://localhost:5000/admins?email=${loggedInUser.email}`)
+    fetch(`http://localhost:5000/admins`)
       .then(res => res.json())
-      .then(data => setIsAdmin(data))
+      .then(data => {
+        setIsAdmin(data)
+        // const checkAdmin = data.filter(admin => admin.email === loggedInUser.email)
+        // console.log(checkAdmin)
+        // if (checkAdmin.length > 0) {
+        //   setNewAdmin(true)
+        // }
+      }
+        // {
+        // if(data.length > 0){
+        //   const admin = {...loggedInUser}
+        //   admin.setUser = true;
+        //   setLoggedInUser(admin)
+        // } else {
+        //   const admin = {...loggedInUser}
+        //   admin.setUser = false;
+        //   setLoggedInUser(admin)
+        // }
+        // }
+      )
   }, [])
+  // console.log(check)
+  useEffect(() => {
 
-  const checkAdmin = isAdmin.filter(admin => admin.email === loggedInUser.email)
-
+    fetch(`http://localhost:5000/admins`)
+      .then(res => res.json())
+      .then(data => {
+        const checkAdmin = data.filter(admin => admin.email === loggedInUser.email)
+        // console.log(checkAdmin == )
+        if (checkAdmin.length === 1) {
+          setNewAdmin(true)
+        }
+      }
+      )
+  }, [loggedInUser])
+  console.log(newAdmin)
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, newAdmin, setNewAdmin]}>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -67,7 +100,8 @@ function App() {
             <Order></Order>
           </PrivateRoute>
           {
-            checkAdmin.length > 0 ? <PrivateRoute exact path="/dashboard">
+            newAdmin ? 
+            <PrivateRoute exact path="/dashboard">
               <ServiceList></ServiceList>
             </PrivateRoute> : <PrivateRoute exact path="/dashboard">
                 <UserOrderHistory></UserOrderHistory>
