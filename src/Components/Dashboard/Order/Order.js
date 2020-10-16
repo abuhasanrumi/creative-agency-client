@@ -5,6 +5,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import Sidebar from '../Sidebar/Sidebar';
 
 const Order = () => {
+    document.title="New Order"
     const currentForm = useRef(null)
 
     const { serviceName } = useParams()

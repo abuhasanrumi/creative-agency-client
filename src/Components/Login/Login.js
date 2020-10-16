@@ -12,6 +12,7 @@ import './Login.css'
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
+    document.title = "Login - Creative Agency"
     const history = useHistory();
     const location = useLocation();
 
@@ -65,7 +66,7 @@ const Login = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-6 col-10 offset-md-3 offset-1 text-center">
+                <div className="col-md-6 offset-md-3 text-center">
                     <img className="img-fluid w-50 py-5" src={logo} alt="" />
                     <div className="loginArea p-5">
                         <button onClick={handleGoogleSignIn} id="googleLogin" className="btn form-control"><p className="m-0">Continue with Google</p></button>

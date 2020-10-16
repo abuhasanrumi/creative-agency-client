@@ -35,6 +35,7 @@ const AddService = () => {
         })
         e.preventDefault()
     }
+    document.title = "Add Service"
     return (
         <section>
             <div className="container-fluid row">

@@ -5,6 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 const MakeAdmin = () => {
     const currentForm = useRef(null)
     const handleSubmit = (e) => { 
+        document.title = "Make Admin"
         const email = document.getElementById('email').value;
         
         const newAdmin = {email}

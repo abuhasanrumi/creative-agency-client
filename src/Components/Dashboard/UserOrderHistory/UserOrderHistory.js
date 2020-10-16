@@ -6,6 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import './UserOrderHistory.css'
 
 const UserOrderHistory = () => {
+    document.title = "Dashboard"
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {

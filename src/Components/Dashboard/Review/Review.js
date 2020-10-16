@@ -4,6 +4,7 @@ import { UserContext } from '../../../App';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 const Review = () => {
+    document.title = "Write Review"
     const currentForm = useRef(null)
     const [loggedInUser] = useContext(UserContext)
     const handleSubmit = (e) => { 

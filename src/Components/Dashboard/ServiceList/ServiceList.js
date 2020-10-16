@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import Sidebar from '../Sidebar/Sidebar';
-import ServiceListTable from '../ServiceListTable/ServiceListTable';
 import { UserContext } from '../../../App';
-import UserOrderHistory from '../UserOrderHistory/UserOrderHistory';
 
 import spinner from '../../../images/icons/Spin-1s-200px.gif'
 const ServiceList = () => {
+    document.title = "Dashboard"
 
     const [loggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
@@ -16,18 +15,6 @@ const ServiceList = () => {
             .then(data => setOrders(data))
     }, [])
 
-    // const [isAdmin, setIsAdmin] = useState([])
-    // useEffect(() => {
-    //     fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins${loggedInUser.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setIsAdmin(data))
-    // }, [])
-
-    // const checkAdmin = isAdmin.filter(admin => admin.email === loggedInUser.email)
-    const filterOrder = orders.filter(order => order.email === loggedInUser.email)
-
-    // const verifyAdmin = checkAdmin[0]
-    // console.log(checkAdmin)
 
     return (
         <section>
