@@ -46,26 +46,9 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setIsAdmin(data)
-        // const checkAdmin = data.filter(admin => admin.email === loggedInUser.email)
-        // console.log(checkAdmin)
-        // if (checkAdmin.length > 0) {
-        //   setNewAdmin(true)
-        // }
       }
-        // {
-        // if(data.length > 0){
-        //   const admin = {...loggedInUser}
-        //   admin.setUser = true;
-        //   setLoggedInUser(admin)
-        // } else {
-        //   const admin = {...loggedInUser}
-        //   admin.setUser = false;
-        //   setLoggedInUser(admin)
-        // }
-        // }
       )
   }, [])
-  // console.log(check)
   useEffect(() => {
 
     fetch(`https://enigmatic-badlands-22893.herokuapp.com/admins`)
@@ -79,7 +62,6 @@ function App() {
       }
       )
   }, [loggedInUser])
-  console.log(newAdmin)
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser, newAdmin, setNewAdmin]}>
       <Router>

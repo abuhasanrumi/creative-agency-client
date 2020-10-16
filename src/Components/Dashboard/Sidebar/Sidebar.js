@@ -6,8 +6,6 @@ import './Sidebar.css'
 import logo from '../../../images/logos/logo.png'
 import { UserContext } from '../../../App';
 import * as firebase from "firebase/app";
-import spinner from '../../../images/icons/Spin-1s-200px.gif'
-
 const Sidebar = () => {
 
     const [loggedInUser, setLoggedInUser, newAdmin, setNewAdmin] = useContext(UserContext)
@@ -15,6 +13,8 @@ const Sidebar = () => {
         firebase.auth().signOut().then(function () {
             setLoggedInUser({})
             setNewAdmin(false)
+            sessionStorage.removeItem("userToken");
+            sessionStorage.clear(); 
         }).catch(function (error) {
             // An error happened.
         });

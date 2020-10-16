@@ -38,6 +38,7 @@ const Login = () => {
                     email: email,
                     photo: photoURL
                 }
+                storeAuthToken()
                 setLoggedInUser(signedInUser)
                 // storeAuthToken()
                 history.replace(from);
