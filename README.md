@@ -26,3 +26,6 @@ It is a fully responsive and interactive web agency application built with MERN 
 - Heroku
 - Firebase Hosting
 - Context API
+
+## Resume
+[Resume Link](https://drive.google.com/file/d/1JoEhI-zfcg_Qr4BKUTveHmlPvkzNoXlb/view?usp=sharing)
